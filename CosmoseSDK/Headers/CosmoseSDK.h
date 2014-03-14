@@ -17,7 +17,7 @@
  
  ## Application configuration
  
- Cosmose SDK require that the app provide a unique Cosmose SDK App Identifier via an app specific Info.plist file as well as custom URL scheme (`xcosmose`) need to be defined for the app. For more details please refer to the documentation under https://bitbucket.org/Cosmose/cosmose-ios-sdk/wiki/Home . Example app using Cosmose SDK and Facebook login can be found at https://bitbucket.org/Cosmose/cosmose-ios-sdk/src/master/CosmoseSDKDemo/ .
+ Cosmose SDK require that the app provide a unique Cosmose SDK App Identifier via an app specific Info.plist file as well as custom URL scheme (`xcosmose`) need to be defined for the app. For more details please refer to the documentation under https://github.com/Cosmose/cosmose-ios-sdk . Example app using Cosmose SDK and Facebook login can be found at https://github.com/Cosmose/cosmose-ios-sdk/tree/master/CosmoseSDKDemo .
  */
 
 @interface CosmoseSDK : NSObject
