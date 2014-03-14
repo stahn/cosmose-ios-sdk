@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "http://cosmose.co"
   s.platform     = :ios, '7.0'
 
-  s.source       = { :git => "git@bitbucket.org:Cosmose/cosmose-ios-sdk.git" }
+  s.source       = { :git => "https://github.com/Cosmose/cosmose-ios-sdk.git" }
 
   s.source_files =  'CosmoseSDK/Headers/*.h'
   s.preserve_paths = 'CosmoseSDK/libCosmoseSDK.a'

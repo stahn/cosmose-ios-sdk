@@ -10,7 +10,7 @@ Add `CosmoseSDK` dependency to your `Podfile`:
 Here's an example:
 
 ```ruby
-pod 'CosmoseSDK', :git => 'git@bitbucket.org:Cosmose/cosmose-ios-sdk.git'
+pod 'CosmoseSDK', :git => 'https://github.com/Cosmose/cosmose-ios-sdk.git'
 ```
 
 # Configure `.plist`
