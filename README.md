@@ -59,6 +59,15 @@ We assume here, that your app integrating Facebook Login is based on a official 
 
 1. After the successfull login or once the app detect that user is already logged in call: `[CosmoseSDK updateFbSession:]`, and pass an instance of `FBSession` that represents the active session (e.g., `[FBSession activeSession]`).
 
+Please refer to `[CosmoseSDK updateFbDataWithToken:userInfo:]` method (more info in the `appledoc`) if your app is based on incompatible version of Facebook SDK or your app is not based on Facebook SDK at all but still supports Facebook Sign In.
+
+## Google SignIn integration
+
+If your app supports Google SignIn, you may use `[CosmoseSDK updateGoogleSignIn:]` method to provide basic user data to Cosmose SDK. If ths sign-in process is compatible with the instructions from here: https://developers.google.com/+/mobile/ios/sign-in then you may add a call to `[CosmoseSDK updateGoogleSignIn:]` directly to your apps' `GPPSignInDelegate`. Otherwise please refer to Cosmose SDK `appledoc` and method `[CosmoseSDK updateGoogleSignInDataWithEmail:userID]` in order to pass basic user info to Cosmose SDK.
+
+## Alternative user identification methods
+
+If your app does not incorporate Facebook or Google Sign In but still requires user to type in his or her email address (for alternative sign in process or regardless of the reason) you may provide that information to Cosmose SDK. Once user type in a email address within your app you should call `[CosmoseSDK updateUserEmail:]` passing that email address. Please refer to the `appledoc` for more information about this method.
 
 # Demo App
 

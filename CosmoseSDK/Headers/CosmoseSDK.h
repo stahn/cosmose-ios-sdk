@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class FBSession;
+@class FBSession, GPPSignIn;
 
 /**
  `CosmoseSDK` is a main entry class of Cosmose SDK library.
@@ -58,7 +58,51 @@
  Either way it is possible to provide `FBSession` instance by directly calling `[FBSession activeSession]` from the app's login flow.
  
  @param fbSession The instance of active and open Facebook session obtained via Facebook-iOS-SDK (see https://developers.facebook.com/docs/ios )
+ 
+ @see updateFbDataWithToken:userInfo:
  */
 + (void)updateFbSession:(FBSession*)fbSession;
+
+/**
+ Alternative way to update facebook related user details. Use this method instead of `updateFbSession:`) when your app doesn't utilize Facebook SDK or when incompatible version of SDK is in use.
+ `Nil` value can be provided for each of two parameters if not available at the moment of call and can be provided later.
+ 
+ @param fbToken Facebook API token (if available)
+ @param fbUserInfo Dictionary with user data including user fbid (if available)
+ 
+ @see updateFbSession:
+ */
++ (void)updateFbDataWithToken:(NSString*)fbToken userInfo:(NSDictionary*)fbUserInfo;
+
+/**
+ Link user's google account to Cosmose SDK user database.
+ If your app supports Google SignIn via Google Plus SDK use this method to provide basic user data to Cosmose SDK.
+ This method should be called as soon as the sing in (or silent sign in) is completed. The best place to put call to this method is in `GPPSignInDelegate`'s method `finishedWithAuth:error:` when error is not `nil.
+ To retrieve handle to active `GPPSignIn` instance you may call `[GPPSignIn sharedInstance]`
+ 
+ @param googleSignIn The active instance of `GPPSignIn` interface
+ 
+ @see updateGoogleSignInDataWithEmail:userID:
+ */
++ (void)updateGoogleSignIn:(GPPSignIn*)googleSignIn;
+
+/**
+ Alternative way to provide basic user data info in case when app supports Google Sign In. You should use this method instead of `updateGoogleSignIn:` when `GPPSignIn` inteface is not available in your app.
+ 
+ @param googleUserEmail User's email address used for Google Sign In
+ @param googleUserID User's google ID retireved after successfull sing in
+ 
+ @see updateGoogleSignIn:
+ */
++ (void)updateGoogleSignInDataWithEmail:(NSString*)googleUserEmail userID:(NSString*)googleUserID;
+
+/**
+ If your app support user login via e-mail and no Facebook nor Google authentication is in use, you may call this method to link basic user's info with Cosmose SDK.
+ 
+ @param userEmail User's email address used for app sign in or retireved from user at any point during the app usage
+ 
+ @see updateGoogleSignIn: updateFbSession:
+ */
++ (void)updateUserEmail:(NSString*)userEmail;
 
 @end
